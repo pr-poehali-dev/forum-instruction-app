@@ -20,13 +20,20 @@ interface InstructionVariant {
   contact?: string;
 }
 
+interface InstructionCategory {
+  title: string;
+  variants: InstructionVariant[];
+}
+
 interface Task {
   id: string;
   title: string;
   description: string;
   completed: boolean;
+  daysBeforeForum: number;
   hasInstruction?: boolean;
   instructionVariants?: InstructionVariant[];
+  instructionCategories?: InstructionCategory[];
 }
 
 interface TimeSection {
@@ -42,6 +49,8 @@ const Index = () => {
   const [selectedTask, setSelectedTask] = useState<Task | null>(null);
   const [currentStep, setCurrentStep] = useState(0);
   const [activeVariant, setActiveVariant] = useState(0);
+  const [activeCategory, setActiveCategory] = useState(0);
+  const [forumDate, setForumDate] = useState<Date | null>(null);
 
   const [sections, setSections] = useState<TimeSection[]>([
     {
@@ -55,6 +64,7 @@ const Index = () => {
           title: 'Составление расписания',
           description: 'Создание программы мероприятия',
           completed: false,
+          daysBeforeForum: 30,
           hasInstruction: true,
           instructionVariants: [
             {
@@ -86,6 +96,7 @@ const Index = () => {
           title: 'Еда',
           description: 'Организация питания участников',
           completed: false,
+          daysBeforeForum: 30,
           hasInstruction: true,
           instructionVariants: [
             {
@@ -131,6 +142,7 @@ const Index = () => {
           title: 'УПИ',
           description: 'Видеосъемка и фотосессия',
           completed: false,
+          daysBeforeForum: 30,
           hasInstruction: true,
           instructionVariants: [
             {
@@ -164,6 +176,7 @@ const Index = () => {
           title: 'Пропуска и Face ID',
           description: 'Оформление доступа для участников',
           completed: false,
+          daysBeforeForum: 14,
           hasInstruction: true,
           instructionVariants: [
             {
@@ -235,6 +248,7 @@ const Index = () => {
           title: 'Жилье',
           description: 'Организация размещения участников',
           completed: false,
+          daysBeforeForum: 14,
           hasInstruction: true,
           instructionVariants: [
             {
@@ -273,6 +287,7 @@ const Index = () => {
           title: 'Транспорт',
           description: 'Организация автобусов',
           completed: false,
+          daysBeforeForum: 7,
           hasInstruction: true,
           instructionVariants: [
             {
@@ -301,13 +316,17 @@ const Index = () => {
         },
         {
           id: 'rooms',
-          title: 'Бронирование переговорных, конференц-залов, спортзалов',
+          title: 'Бронирование',
           description: 'Резервирование помещений',
           completed: false,
+          daysBeforeForum: 7,
           hasInstruction: true,
-          instructionVariants: [
+          instructionCategories: [
             {
               title: 'Переговорные',
+              variants: [
+                {
+                  title: 'Переговорные',
               steps: [
                 {
                   text: 'Бронирование переговорных происходит на сайте',
@@ -330,9 +349,13 @@ const Index = () => {
                   text: 'Заполните появившееся окно, нажмите кнопку добавить',
                 },
               ],
+            }],
             },
             {
-              title: 'Конференц-зал "Курчатов"',
+              title: 'Конференц-залы',
+              variants: [
+                {
+                  title: 'Конференц-зал "Курчатов"',
               steps: [
                 {
                   text: 'Бронирование происходит на сайте',
@@ -367,9 +390,13 @@ const Index = () => {
                   text: 'Шаблон сообщения: Добрый день, меня зовут Иван, являюсь специалистом Управления HR. 25.12.2025 мы планируем проведение форума "Алабуга Старт ВУЗы". В рамках данного мероприятия нам необходим конференц-зал в Синергии 13.2 "Яковлев", 25.12.2025 с 12:00 до 16:00. Просим вас зарегистрировать бронь',
                 },
               ],
+            }],
             },
             {
-              title: 'Спортзал "Алабуга Политех"',
+              title: 'Спортзалы',
+              variants: [
+                {
+                  title: 'Спортзал "Алабуга Политех"',
               steps: [
                 {
                   text: 'Бронирование спортзала происходит на сайте',
@@ -407,6 +434,7 @@ const Index = () => {
                   text: 'Бронь доступна только для совершеннолетних лиц',
                 },
               ],
+            }],
             },
           ],
         },
@@ -415,6 +443,7 @@ const Index = () => {
           title: 'Специалист тех. поддержки',
           description: 'Помощь в настройке оборудования',
           completed: false,
+          daysBeforeForum: 7,
           hasInstruction: true,
           instructionVariants: [
             {
@@ -473,12 +502,14 @@ const Index = () => {
     setSelectedTask(task);
     setCurrentStep(0);
     setActiveVariant(0);
+    setActiveCategory(0);
   };
 
   const closeInstruction = () => {
     setSelectedTask(null);
     setCurrentStep(0);
     setActiveVariant(0);
+    setActiveCategory(0);
   };
 
   const nextStep = () => {
@@ -501,16 +532,55 @@ const Index = () => {
     setCurrentStep(0);
   };
 
+  const handleCategoryChange = (value: string) => {
+    setActiveCategory(parseInt(value));
+    setActiveVariant(0);
+    setCurrentStep(0);
+  };
+
+  const getDaysUntilForum = (daysBeforeForum: number): number | null => {
+    if (!forumDate) return null;
+    const today = new Date();
+    const deadlineDate = new Date(forumDate);
+    deadlineDate.setDate(deadlineDate.getDate() - daysBeforeForum);
+    const daysUntil = Math.ceil((deadlineDate.getTime() - today.getTime()) / (1000 * 60 * 60 * 24));
+    return daysUntil;
+  };
+
+  const isDeadlineUrgent = (task: Task): boolean => {
+    const daysUntil = getDaysUntilForum(task.daysBeforeForum);
+    if (daysUntil === null) return false;
+    return daysUntil <= 3 && daysUntil >= 0;
+  };
+
+  const isDeadlinePassed = (task: Task): boolean => {
+    const daysUntil = getDaysUntilForum(task.daysBeforeForum);
+    if (daysUntil === null) return false;
+    return daysUntil < 0;
+  };
+
   return (
     <div className="min-h-screen flex">
       <aside className="w-80 bg-sidebar text-sidebar-foreground p-6 flex flex-col gap-6">
-        <div className="flex items-center gap-3 mb-4">
-          <div className="w-12 h-12 rounded-xl bg-sidebar-primary flex items-center justify-center">
-            <Icon name="Rocket" size={24} className="text-sidebar-primary-foreground" />
+        <div className="space-y-4">
+          <div className="flex items-center gap-3">
+            <div className="w-12 h-12 rounded-xl bg-sidebar-primary flex items-center justify-center">
+              <Icon name="Rocket" size={24} className="text-sidebar-primary-foreground" />
+            </div>
+            <div>
+              <h1 className="text-xl font-bold text-sidebar-foreground">Forum Guide</h1>
+              <p className="text-xs text-sidebar-foreground/60">Инструкции организатора</p>
+            </div>
           </div>
-          <div>
-            <h1 className="text-xl font-bold text-sidebar-foreground">Forum Guide</h1>
-            <p className="text-xs text-sidebar-foreground/60">Инструкции организатора</p>
+          
+          <div className="bg-sidebar-accent/50 p-3 rounded-lg">
+            <label className="text-xs text-sidebar-foreground/80 mb-2 block">Дата форума</label>
+            <input
+              type="date"
+              value={forumDate ? forumDate.toISOString().split('T')[0] : ''}
+              onChange={(e) => setForumDate(e.target.value ? new Date(e.target.value) : null)}
+              className="w-full bg-sidebar text-sidebar-foreground px-3 py-2 rounded-md text-sm border border-sidebar-border focus:outline-none focus:ring-2 focus:ring-sidebar-primary"
+            />
           </div>
         </div>
 
@@ -573,8 +643,15 @@ const Index = () => {
           </div>
 
           <div className="space-y-4">
-            {activeData.tasks.map((task) => (
-              <Card key={task.id} className="overflow-hidden transition-shadow hover:shadow-lg">
+            {activeData.tasks.map((task) => {
+              const isUrgent = isDeadlineUrgent(task);
+              const isPassed = isDeadlinePassed(task);
+              const daysUntil = getDaysUntilForum(task.daysBeforeForum);
+              
+              return (
+              <Card key={task.id} className={`overflow-hidden transition-all hover:shadow-lg ${
+                isUrgent ? 'border-2 border-orange-500 bg-orange-50/50' : isPassed ? 'border-2 border-red-500 bg-red-50/50' : ''
+              }`}>
                 <CardHeader>
                   <div className="flex items-start justify-between gap-4">
                     <div className="flex-1">
@@ -586,8 +663,29 @@ const Index = () => {
                         <CardTitle className={task.completed ? 'line-through text-muted-foreground' : ''}>
                           {task.title}
                         </CardTitle>
+                        {isUrgent && (
+                          <Badge variant="destructive" className="ml-2 bg-orange-500">
+                            <Icon name="AlertTriangle" size={14} className="mr-1" />
+                            Срочно!
+                          </Badge>
+                        )}
+                        {isPassed && (
+                          <Badge variant="destructive" className="ml-2">
+                            <Icon name="XCircle" size={14} className="mr-1" />
+                            Просрочено
+                          </Badge>
+                        )}
                       </div>
-                      <CardDescription>{task.description}</CardDescription>
+                      <CardDescription>
+                        {task.description}
+                        {forumDate && daysUntil !== null && (
+                          <span className={`ml-2 text-xs ${
+                            isUrgent ? 'text-orange-600 font-medium' : isPassed ? 'text-red-600 font-medium' : 'text-muted-foreground'
+                          }`}>
+                            {daysUntil > 0 ? `(осталось ${daysUntil} дн.)` : daysUntil === 0 ? '(сегодня!)' : `(просрочено ${Math.abs(daysUntil)} дн.)`}
+                          </span>
+                        )}
+                      </CardDescription>
                     </div>
                     <Badge variant={task.completed ? 'default' : 'secondary'}>
                       {task.completed ? 'Выполнено' : 'В работе'}
@@ -603,13 +701,13 @@ const Index = () => {
                   </CardContent>
                 )}
               </Card>
-            ))}
+            )})}
           </div>
         </div>
       </main>
 
       <Dialog open={!!selectedTask} onOpenChange={closeInstruction}>
-        <DialogContent className="max-w-3xl max-h-[85vh] overflow-hidden flex flex-col">
+        <DialogContent className="max-w-5xl max-h-[90vh] overflow-hidden flex flex-col">
           <DialogHeader>
             <DialogTitle className="text-2xl flex items-center gap-3">
               <Icon name="BookOpen" size={28} className="text-primary" />
@@ -617,7 +715,97 @@ const Index = () => {
             </DialogTitle>
           </DialogHeader>
 
-          {selectedTask && selectedTask.instructionVariants && (
+          {selectedTask && selectedTask.instructionCategories && (
+            <div className="flex-1 overflow-y-auto">
+              <Tabs value={activeCategory.toString()} onValueChange={handleCategoryChange} className="mb-4">
+                <TabsList className="grid w-full" style={{ gridTemplateColumns: `repeat(${selectedTask.instructionCategories.length}, 1fr)` }}>
+                  {selectedTask.instructionCategories.map((category, idx) => (
+                    <TabsTrigger key={idx} value={idx.toString()}>
+                      {category.title}
+                    </TabsTrigger>
+                  ))}
+                </TabsList>
+              </Tabs>
+
+              {selectedTask.instructionCategories[activeCategory].variants.length > 1 && (
+                <Tabs value={activeVariant.toString()} onValueChange={handleVariantChange} className="mb-6">
+                  <TabsList className="grid w-full" style={{ gridTemplateColumns: `repeat(${selectedTask.instructionCategories[activeCategory].variants.length}, 1fr)` }}>
+                    {selectedTask.instructionCategories[activeCategory].variants.map((variant, idx) => (
+                      <TabsTrigger key={idx} value={idx.toString()}>
+                        {variant.title}
+                      </TabsTrigger>
+                    ))}
+                  </TabsList>
+                </Tabs>
+              )}
+
+              <div className="space-y-6">
+                <div className="flex items-center justify-between mb-4">
+                  <div className="flex items-center gap-3">
+                    <div className="w-12 h-12 rounded-full bg-primary/10 text-primary flex items-center justify-center font-bold text-lg">
+                      {currentStep + 1}
+                    </div>
+                    <div>
+                      <p className="text-base text-muted-foreground">
+                        Шаг {currentStep + 1} из {selectedTask.instructionCategories[activeCategory].variants[activeVariant].steps.length}
+                      </p>
+                      <Progress
+                        value={((currentStep + 1) / selectedTask.instructionCategories[activeCategory].variants[activeVariant].steps.length) * 100}
+                        className="w-72 h-2.5 mt-1"
+                      />
+                    </div>
+                  </div>
+                </div>
+
+                <Card className="bg-muted/50 border-2">
+                  <CardContent className="pt-8 pb-8 px-8">
+                    <p className="text-xl leading-relaxed">
+                      {selectedTask.instructionCategories[activeCategory].variants[activeVariant].steps[currentStep].text}
+                    </p>
+                    {selectedTask.instructionCategories[activeCategory].variants[activeVariant].steps[currentStep].link && (
+                      <a
+                        href={selectedTask.instructionCategories[activeCategory].variants[activeVariant].steps[currentStep].link}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-2 mt-6 text-primary hover:underline font-medium text-lg"
+                      >
+                        <Icon name="ExternalLink" size={20} />
+                        {selectedTask.instructionCategories[activeCategory].variants[activeVariant].steps[currentStep].linkText}
+                      </a>
+                    )}
+                    {selectedTask.instructionCategories[activeCategory].variants[activeVariant].steps[currentStep].contact && (
+                      <div className="mt-6 flex items-center gap-2 text-base bg-primary/10 px-5 py-3 rounded-lg">
+                        <Icon name="User" size={18} className="text-primary" />
+                        <span className="font-medium">
+                          {selectedTask.instructionCategories[activeCategory].variants[activeVariant].steps[currentStep].contact}
+                        </span>
+                      </div>
+                    )}
+                  </CardContent>
+                </Card>
+
+                <div className="flex justify-between pt-6">
+                  <Button onClick={prevStep} disabled={currentStep === 0} variant="outline" size="lg">
+                    <Icon name="ChevronLeft" size={20} className="mr-2" />
+                    Назад
+                  </Button>
+                  {currentStep < selectedTask.instructionCategories[activeCategory].variants[activeVariant].steps.length - 1 ? (
+                    <Button onClick={nextStep} size="lg">
+                      Далее
+                      <Icon name="ChevronRight" size={20} className="ml-2" />
+                    </Button>
+                  ) : (
+                    <Button onClick={closeInstruction} variant="default" size="lg">
+                      <Icon name="Check" size={20} className="mr-2" />
+                      Завершить
+                    </Button>
+                  )}
+                </div>
+              </div>
+            </div>
+          )}
+          
+          {selectedTask && selectedTask.instructionVariants && !selectedTask.instructionCategories && (
             <div className="flex-1 overflow-y-auto">
               {selectedTask.instructionVariants.length > 1 && (
                 <Tabs value={activeVariant.toString()} onValueChange={handleVariantChange} className="mb-6">
@@ -634,24 +822,24 @@ const Index = () => {
               <div className="space-y-6">
                 <div className="flex items-center justify-between mb-4">
                   <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 rounded-full bg-primary/10 text-primary flex items-center justify-center font-bold">
+                    <div className="w-12 h-12 rounded-full bg-primary/10 text-primary flex items-center justify-center font-bold text-lg">
                       {currentStep + 1}
                     </div>
                     <div>
-                      <p className="text-sm text-muted-foreground">
+                      <p className="text-base text-muted-foreground">
                         Шаг {currentStep + 1} из {selectedTask.instructionVariants[activeVariant].steps.length}
                       </p>
                       <Progress
                         value={((currentStep + 1) / selectedTask.instructionVariants[activeVariant].steps.length) * 100}
-                        className="w-64 h-2 mt-1"
+                        className="w-72 h-2.5 mt-1"
                       />
                     </div>
                   </div>
                 </div>
 
-                <Card className="bg-muted/50">
-                  <CardContent className="pt-6">
-                    <p className="text-lg leading-relaxed">
+                <Card className="bg-muted/50 border-2">
+                  <CardContent className="pt-8 pb-8 px-8">
+                    <p className="text-xl leading-relaxed">
                       {selectedTask.instructionVariants[activeVariant].steps[currentStep].text}
                     </p>
                     {selectedTask.instructionVariants[activeVariant].steps[currentStep].link && (
@@ -659,15 +847,15 @@ const Index = () => {
                         href={selectedTask.instructionVariants[activeVariant].steps[currentStep].link}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="inline-flex items-center gap-2 mt-4 text-primary hover:underline font-medium"
+                        className="inline-flex items-center gap-2 mt-6 text-primary hover:underline font-medium text-lg"
                       >
-                        <Icon name="ExternalLink" size={18} />
+                        <Icon name="ExternalLink" size={20} />
                         {selectedTask.instructionVariants[activeVariant].steps[currentStep].linkText}
                       </a>
                     )}
                     {selectedTask.instructionVariants[activeVariant].steps[currentStep].contact && (
-                      <div className="mt-4 flex items-center gap-2 text-sm bg-primary/10 px-4 py-2 rounded-lg">
-                        <Icon name="User" size={16} className="text-primary" />
+                      <div className="mt-6 flex items-center gap-2 text-base bg-primary/10 px-5 py-3 rounded-lg">
+                        <Icon name="User" size={18} className="text-primary" />
                         <span className="font-medium">
                           {selectedTask.instructionVariants[activeVariant].steps[currentStep].contact}
                         </span>
@@ -676,19 +864,19 @@ const Index = () => {
                   </CardContent>
                 </Card>
 
-                <div className="flex justify-between pt-4">
-                  <Button onClick={prevStep} disabled={currentStep === 0} variant="outline">
-                    <Icon name="ChevronLeft" size={18} className="mr-2" />
+                <div className="flex justify-between pt-6">
+                  <Button onClick={prevStep} disabled={currentStep === 0} variant="outline" size="lg">
+                    <Icon name="ChevronLeft" size={20} className="mr-2" />
                     Назад
                   </Button>
                   {currentStep < selectedTask.instructionVariants[activeVariant].steps.length - 1 ? (
-                    <Button onClick={nextStep}>
+                    <Button onClick={nextStep} size="lg">
                       Далее
-                      <Icon name="ChevronRight" size={18} className="ml-2" />
+                      <Icon name="ChevronRight" size={20} className="ml-2" />
                     </Button>
                   ) : (
-                    <Button onClick={closeInstruction} variant="default">
-                      <Icon name="Check" size={18} className="mr-2" />
+                    <Button onClick={closeInstruction} variant="default" size="lg">
+                      <Icon name="Check" size={20} className="mr-2" />
                       Завершить
                     </Button>
                   )}
