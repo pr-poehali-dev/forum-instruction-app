@@ -203,16 +203,14 @@ const Index = () => {
                       linkText: 'rs.alabuga.ru',
                     },
                     {
-                      text: 'На сайте нажмите "Создать заявку на физ. лицо", выберите "Гражданин РФ"',
-                      image: 'https://cdn.poehali.dev/files/Пропуск Граждане РФ шаг 3.jpg',
-                    },
-                    {
-                      text: 'Заполните заявку, обязательно прикрепите сканы паспорта и согласия на обработку данных',
-                      image: 'https://cdn.poehali.dev/files/Пропуск Граждане РФ шаг 4.jpg',
+                      text: 'На сайте нажмите "Создать заявку на физ. лицо", выберите "Гражданин РФ". Заполните заявку, обязательно прикрепите сканы паспорта и согласия на обработку данных',
+                      images: [
+                        'https://cdn.poehali.dev/files/Пропуск Граждане РФ шаг 3.jpg',
+                        'https://cdn.poehali.dev/files/Пропуск Граждане РФ шаг 4.jpg'
+                      ],
                     },
                     {
                       text: 'Нажмите "Создать" и зафиксируйте номер заявки',
-                      image: 'https://cdn.poehali.dev/files/Пропуск Граждане РФ шаг 5.jpg',
                     },
                     {
                       text: 'Передайте номер заявки доверенному лицу (сотрудник, отвечающий за оформление пропусков и Face ID)',
@@ -247,16 +245,14 @@ const Index = () => {
                       linkText: 'rs.alabuga.ru',
                     },
                     {
-                      text: 'На сайте нажмите "Создать заявку на физ. лицо", выберите "Иностранное лицо"',
-                      image: 'https://cdn.poehali.dev/files/Пропуск иностранные граждане шаг 3.jpg',
-                    },
-                    {
-                      text: 'Заполните заявку, обязательно прикрепите сканы паспорта, согласия на обработку данных, визы',
-                      image: 'https://cdn.poehali.dev/files/Пропуск иностранные граждане шаг 4.jpg',
+                      text: 'На сайте нажмите "Создать заявку на физ. лицо", выберите "Иностранное лицо". Заполните заявку, обязательно прикрепите сканы паспорта, согласия на обработку данных, визы',
+                      images: [
+                        'https://cdn.poehali.dev/files/Пропуск иностранные граждане шаг 3.jpg',
+                        'https://cdn.poehali.dev/files/Пропуск иностранные граждане шаг 4.jpg'
+                      ],
                     },
                     {
                       text: 'Нажмите "Создать" и зафиксируйте номер заявки',
-                      image: 'https://cdn.poehali.dev/files/Пропуск иностранные граждане шаг 5.jpg',
                     },
                     {
                       text: 'Передайте номер заявки доверенному лицу (сотрудник, отвечающий за оформление пропусков и Face ID)',
@@ -448,15 +444,15 @@ const Index = () => {
                 },
                 {
                   text: 'В правом верхнем углу выберите вкладку "Месяц"',
-                  image: 'https://cdn.poehali.dev/files/Бронирование Спортзалы Алабуга Политех шаг 3.jpg',
+                  image: 'https://cdn.poehali.dev/files/Бронирование Спортзалы Алабуга Политех шаг 5.jpg',
                 },
                 {
                   text: 'Выберите необходимую дату и нажмите на нее',
-                  image: 'https://cdn.poehali.dev/files/Бронирование Спортзалы Алабуга Политех шаг 4.jpg',
+                  image: 'https://cdn.poehali.dev/files/Бронирование Спортзалы Алабуга Политех шаг 3.jpg',
                 },
                 {
                   text: 'Заполните окно, в комментариях укажите: ответственное лицо, контактные данные (ТГ, тел.), цель бронирования, кол-во человек. Нажмите кнопку добавить',
-                  image: 'https://cdn.poehali.dev/files/Бронирование Спортзалы Алабуга Политех шаг 5.jpg',
+                  image: 'https://cdn.poehali.dev/files/Бронирование Спортзалы Алабуга Политех шаг 4.jpg',
                 },
               ],
             },
@@ -625,6 +621,20 @@ const Index = () => {
               className="w-full bg-sidebar text-sidebar-foreground px-3 py-2 rounded-md text-sm border border-sidebar-border focus:outline-none focus:ring-2 focus:ring-sidebar-primary"
             />
           </div>
+
+          <a 
+            href="https://cdn.poehali.dev/projects/b1dfe913c0-alabuga/bucket/Маршрутная карта.pdf" 
+            download="Маршрутная карта.pdf"
+            className="w-full"
+          >
+            <Button 
+              variant="outline" 
+              className="w-full flex items-center gap-2 bg-sidebar hover:bg-sidebar-accent text-sidebar-foreground border-sidebar-border"
+            >
+              <Icon name="Download" size={16} />
+              <span className="text-sm">Выгрузка маршрутной карты</span>
+            </Button>
+          </a>
         </div>
 
         <div className="flex flex-col gap-2">
