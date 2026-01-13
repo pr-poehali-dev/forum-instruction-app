@@ -708,10 +708,12 @@ const Index = () => {
       </main>
 
       <Dialog open={!!selectedTask} onOpenChange={closeInstruction}>
-        <DialogContent className="max-w-5xl max-h-[90vh] overflow-hidden flex flex-col">
-          <DialogHeader>
-            <DialogTitle className="text-2xl flex items-center gap-3">
-              <Icon name="BookOpen" size={28} className="text-primary" />
+        <DialogContent className="max-w-5xl max-h-[90vh] overflow-hidden flex flex-col border-2 border-primary/50 bg-gradient-to-br from-card via-card to-primary/5">
+          <DialogHeader className="border-b-2 border-primary/30 pb-4">
+            <DialogTitle className="text-3xl flex items-center gap-3 font-bold">
+              <div className="w-12 h-12 rounded-xl bg-primary flex items-center justify-center">
+                <Icon name="BookOpen" size={28} className="text-white" />
+              </div>
               {selectedTask?.title}
             </DialogTitle>
           </DialogHeader>
