@@ -569,7 +569,6 @@ const Index = () => {
             </div>
             <div>
               <h1 className="text-xl font-bold text-sidebar-foreground">"Alabuga Start" Forum Guide</h1>
-              <p className="text-xs text-sidebar-foreground/60">Инструкции организатора</p>
             </div>
           </div>
           
