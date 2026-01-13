@@ -513,10 +513,17 @@ const Index = () => {
   };
 
   const nextStep = () => {
-    if (selectedTask && selectedTask.instructionVariants) {
-      const maxSteps = selectedTask.instructionVariants[activeVariant].steps.length;
-      if (currentStep < maxSteps - 1) {
-        setCurrentStep(currentStep + 1);
+    if (selectedTask) {
+      if (selectedTask.instructionCategories) {
+        const maxSteps = selectedTask.instructionCategories[activeCategory].variants[activeVariant].steps.length;
+        if (currentStep < maxSteps - 1) {
+          setCurrentStep(currentStep + 1);
+        }
+      } else if (selectedTask.instructionVariants) {
+        const maxSteps = selectedTask.instructionVariants[activeVariant].steps.length;
+        if (currentStep < maxSteps - 1) {
+          setCurrentStep(currentStep + 1);
+        }
       }
     }
   };
@@ -650,8 +657,8 @@ const Index = () => {
               const daysUntil = getDaysUntilForum(task.daysBeforeForum);
               
               return (
-              <Card key={task.id} className={`overflow-hidden transition-all hover:shadow-lg ${
-                isUrgent ? 'border-2 border-orange-500 bg-orange-50/50' : isPassed ? 'border-2 border-red-500 bg-red-50/50' : ''
+              <Card key={task.id} className={`overflow-hidden transition-all hover:shadow-lg border-2 ${
+                isUrgent ? 'border-orange-500 bg-orange-50/50' : isPassed ? 'border-red-500 bg-red-50/50' : 'border-white/30'
               }`}>
                 <CardHeader>
                   <div className="flex items-start justify-between gap-4">
@@ -708,7 +715,7 @@ const Index = () => {
       </main>
 
       <Dialog open={!!selectedTask} onOpenChange={closeInstruction}>
-        <DialogContent className="max-w-5xl max-h-[90vh] overflow-hidden flex flex-col border-2 border-primary/50 bg-gradient-to-br from-slate-800 via-slate-800 to-primary/10">
+        <DialogContent className="max-w-5xl max-h-[90vh] overflow-hidden flex flex-col border-2 border-primary/50 bg-gradient-to-br from-card via-card to-primary/5">
           <DialogHeader className="border-b-2 border-primary/30 pb-4">
             <DialogTitle className="text-3xl flex items-center gap-3 font-bold">
               <div className="w-12 h-12 rounded-xl bg-primary flex items-center justify-center">
