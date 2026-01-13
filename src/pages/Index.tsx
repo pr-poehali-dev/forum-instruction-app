@@ -150,24 +150,7 @@ const Index = () => {
             },
           ],
         },
-        {
-          id: 'venue',
-          title: 'Выбор и бронирование площадки',
-          description: 'Подготовка пространства для проведения форума',
-          completed: false,
-        },
-        {
-          id: 'speakers',
-          title: 'Формирование списка спикеров',
-          description: 'Приглашение экспертов и подтверждение участия',
-          completed: false,
-        },
-        {
-          id: 'budget',
-          title: 'Утверждение бюджета',
-          description: 'Планирование финансовых расходов мероприятия',
-          completed: false,
-        },
+
       ],
     },
     {
@@ -276,24 +259,7 @@ const Index = () => {
             },
           ],
         },
-        {
-          id: 'promotion',
-          title: 'Запуск рекламной кампании',
-          description: 'Продвижение мероприятия и привлечение участников',
-          completed: false,
-        },
-        {
-          id: 'materials',
-          title: 'Подготовка печатных материалов',
-          description: 'Создание брендированных раздаточных материалов',
-          completed: false,
-        },
-        {
-          id: 'tech',
-          title: 'Техническая подготовка',
-          description: 'Настройка оборудования и коммуникаций',
-          completed: false,
-        },
+
       ],
     },
     {
@@ -475,24 +441,7 @@ const Index = () => {
             },
           ],
         },
-        {
-          id: 'final-check',
-          title: 'Финальная проверка площадки',
-          description: 'Последний осмотр и согласование деталей',
-          completed: false,
-        },
-        {
-          id: 'briefing',
-          title: 'Проведение брифинга команды',
-          description: 'Инструктаж волонтёров и организаторов',
-          completed: false,
-        },
-        {
-          id: 'checklist',
-          title: 'Подготовка чек-листов',
-          description: 'Создание списков для контроля в день мероприятия',
-          completed: false,
-        },
+
       ],
     },
   ]);
@@ -593,12 +542,7 @@ const Index = () => {
           })}
         </div>
 
-        <div className="mt-auto pt-6 border-t border-sidebar-border">
-          <div className="flex items-center gap-3 text-sm text-sidebar-foreground/60">
-            <Icon name="Info" size={16} />
-            <span>Фотографии и детали будут добавлены позже</span>
-          </div>
-        </div>
+
       </aside>
 
       <main className="flex-1 p-8 overflow-y-auto bg-background">
