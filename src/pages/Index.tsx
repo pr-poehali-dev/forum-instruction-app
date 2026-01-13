@@ -627,18 +627,20 @@ const Index = () => {
             </p>
           </div>
 
-          <div className="mb-6">
-            <Card>
-              <CardHeader>
-                <CardTitle className="text-lg">Общий прогресс</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <Progress value={calculateProgress(activeData)} className="h-3" />
-                <p className="text-sm text-muted-foreground mt-2">
-                  Выполнено {activeData.tasks.filter((t) => t.completed).length} из {activeData.tasks.length} задач
+          <div className="mb-6 bg-gradient-to-r from-primary/10 to-accent/10 rounded-xl p-6 border-2 border-primary/20">
+            <div className="flex items-center justify-between mb-4">
+              <h3 className="text-2xl font-bold text-foreground flex items-center gap-2">
+                <Icon name="TrendingUp" size={28} className="text-primary" />
+                Общий прогресс
+              </h3>
+              <div className="text-right">
+                <div className="text-3xl font-bold text-primary">{Math.round(calculateProgress(activeData))}%</div>
+                <p className="text-xs text-muted-foreground mt-1">
+                  {activeData.tasks.filter((t) => t.completed).length} из {activeData.tasks.length}
                 </p>
-              </CardContent>
-            </Card>
+              </div>
+            </div>
+            <Progress value={calculateProgress(activeData)} className="h-4" />
           </div>
 
           <div className="space-y-4">
