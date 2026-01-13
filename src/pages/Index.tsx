@@ -12,6 +12,7 @@ interface InstructionStep {
   text: string;
   link?: string;
   linkText?: string;
+  image?: string;
 }
 
 interface InstructionVariant {
@@ -74,18 +75,23 @@ const Index = () => {
                   text: 'Перейдите в WEB-приложение "Конструктор форума"',
                   link: 'https://forumstartkonstruktor.ru/',
                   linkText: 'forumstartkonstruktor.ru',
+                  image: 'https://cdn.poehali.dev/files/Расписание шаг 1.jpg',
                 },
                 {
                   text: 'Из предложенных вариантов мероприятий выберите понравившиеся. После выбора нажмите на кнопку "Создать расписание"',
+                  image: 'https://cdn.poehali.dev/files/Расписание шаг 2.jpg',
                 },
                 {
                   text: 'Отредактируйте время начала мероприятий, при необходимости добавьте дополнительные мероприятия, нажав на кнопку "Добавить элемент"',
+                  image: 'https://cdn.poehali.dev/files/Расписание шаг 3.jpg',
                 },
                 {
                   text: 'После редактирования нажмите на кнопку "Сформировать расписание"',
+                  image: 'https://cdn.poehali.dev/files/Расписание шаг 4.jpg',
                 },
                 {
                   text: 'Сформированное расписание можно сохранить или скачать в формате PDF-файла',
+                  image: 'https://cdn.poehali.dev/files/Расписание шаг 5.jpg',
                 },
               ],
             },
@@ -105,6 +111,7 @@ const Index = () => {
                 {
                   text: 'Для оформления заказа еды обратитесь к @yakitoriya90',
                   contact: '@yakitoriya90',
+                  image: 'https://cdn.poehali.dev/files/Якитория меню.jpg',
                 },
                 {
                   text: 'Предоставьте информацию: 1) ФИО и номер телефона ответственного по мероприятию; 2) Дата проведения; 3) Причина проведения; 4) Подразделение ответственное за мероприятие; 5) Форма документа (заявка или отчет); 6) ФИО и номер телефона ответственного за распоряжение',
@@ -192,12 +199,15 @@ const Index = () => {
                 },
                 {
                   text: 'На сайте нажмите "Создать заявку на физ. лицо", выберите "Гражданин РФ"',
+                  image: 'https://cdn.poehali.dev/files/Пропуск Граждане РФ шаг 3.jpg',
                 },
                 {
                   text: 'Заполните заявку, обязательно прикрепите сканы паспорта и согласия на обработку данных',
+                  image: 'https://cdn.poehali.dev/files/Пропуск Граждане РФ шаг 4.jpg',
                 },
                 {
                   text: 'Нажмите "Создать" и зафиксируйте номер заявки',
+                  image: 'https://cdn.poehali.dev/files/Пропуск Граждане РФ шаг 5.jpg',
                 },
                 {
                   text: 'Передайте номер заявки доверенному лицу (сотрудник, отвечающий за оформление пропусков и Face ID)',
@@ -223,12 +233,15 @@ const Index = () => {
                 },
                 {
                   text: 'На сайте нажмите "Создать заявку на физ. лицо", выберите "Иностранное лицо"',
+                  image: 'https://cdn.poehali.dev/files/Пропуск иностранные граждане шаг 3.jpg',
                 },
                 {
                   text: 'Заполните заявку, обязательно прикрепите сканы паспорта, согласия на обработку данных, визы',
+                  image: 'https://cdn.poehali.dev/files/Пропуск иностранные граждане шаг 4.jpg',
                 },
                 {
                   text: 'Нажмите "Создать" и зафиксируйте номер заявки',
+                  image: 'https://cdn.poehali.dev/files/Пропуск иностранные граждане шаг 5.jpg',
                 },
                 {
                   text: 'Передайте номер заявки доверенному лицу (сотрудник, отвечающий за оформление пропусков и Face ID)',
@@ -256,12 +269,15 @@ const Index = () => {
               steps: [
                 {
                   text: 'Для массового заселения участниц в корп. жилье запустите документ "Заявка на жилье" в системе 1С:ДО 3.0',
+                  image: 'https://cdn.poehali.dev/files/Жилье скрин 1.jpg',
                 },
                 {
                   text: 'Заполните документ по образцу, на каждую участницу прикрепите паспорт: страница с фото + прописка',
+                  image: 'https://cdn.poehali.dev/files/Жилье скрин 2.jpg',
                 },
                 {
                   text: 'После заполнения заявки, запустите процесс согласования документа',
+                  image: 'https://cdn.poehali.dev/files/Жилье скрин 3.jpg',
                 },
                 {
                   text: 'Процесс можно запустить автоматически, нажав на кнопку "Записать и закрыть", а после подтвердить запуск',
@@ -297,12 +313,15 @@ const Index = () => {
                   text: 'Для организации автобусов оставьте заявку на сайте',
                   link: 'https://support.alabuga.ru/',
                   linkText: 'support.alabuga.ru',
+                  image: 'https://cdn.poehali.dev/files/Транспорт шаг 1.jpg',
                 },
                 {
                   text: 'На главной странице, в списке в левом верхнем углу, выберите вкладку «Обратиться за помощью»',
+                  image: 'https://cdn.poehali.dev/files/Транспорт шаг 2.jpg',
                 },
                 {
                   text: 'Из приведенного списка выберите «Создать заявку на автотранспорт»',
+                  image: 'https://cdn.poehali.dev/files/Транспорт шаг 3.jpg',
                 },
                 {
                   text: 'Заполните и отправьте заявку',
@@ -332,21 +351,26 @@ const Index = () => {
                   text: 'Бронирование переговорных происходит на сайте',
                   link: 'https://support.alabuga.ru/',
                   linkText: 'support.alabuga.ru',
+                  image: 'https://cdn.poehali.dev/files/Бронирование Переговорные шаг 1.jpg',
                 },
                 {
                   text: 'На главной странице, в левом верхнем углу выберите вкладку "Бронирование"',
+                  image: 'https://cdn.poehali.dev/files/Бронирование Переговорные шаг 2.jpg',
                 },
                 {
                   text: 'Из предложенного списка переговорных выберите нужную вам. Нажмите на знак плюса справа от выбранной переговорной',
+                  image: 'https://cdn.poehali.dev/files/Бронирование Переговорные шаг 3.jpg',
                 },
                 {
                   text: 'В правом верхнем углу выберите вкладку "Месяц"',
+                  image: 'https://cdn.poehali.dev/files/Бронирование Переговорные шаг 4.jpg',
                 },
                 {
                   text: 'Выберите необходимую дату и нажмите на нее',
                 },
                 {
                   text: 'Заполните появившееся окно, нажмите кнопку добавить',
+                  image: 'https://cdn.poehali.dev/files/Бронирование Переговорные шаг 5.jpg',
                 },
               ],
             }],
@@ -361,21 +385,26 @@ const Index = () => {
                   text: 'Бронирование происходит на сайте',
                   link: 'https://support.alabuga.ru/',
                   linkText: 'support.alabuga.ru',
+                  image: 'https://cdn.poehali.dev/files/Бронирование Конференц-залы Курчатов шаг 1.jpg',
                 },
                 {
                   text: 'На главной странице, в левом верхнем углу выберите вкладку "Бронирование"',
+                  image: 'https://cdn.poehali.dev/files/Бронирование Конференц-залы Курчатов шаг 2.jpg',
                 },
                 {
                   text: 'Из предложенного списка выберите "Alabuga - Курчатов Конгресс-зал". Нажмите на знак плюса справа',
+                  image: 'https://cdn.poehali.dev/files/Бронирование Конференц-залы Курчатов шаг 3.jpg',
                 },
                 {
                   text: 'В правом верхнем углу выберите вкладку "Месяц"',
+                  image: 'https://cdn.poehali.dev/files/Бронирование Конференц-залы Курчатов шаг 4.jpg',
                 },
                 {
                   text: 'Выберите необходимую дату и нажмите на нее',
                 },
                 {
                   text: 'Заполните окно, в комментариях укажите: ответственное лицо, контактные данные (ТГ, тел.), цель бронирования, кол-во человек. Нажмите кнопку добавить',
+                  image: 'https://cdn.poehali.dev/files/Бронирование Конференц-залы Курчатов шаг 5.jpg',
                 },
               ],
             },
@@ -402,21 +431,26 @@ const Index = () => {
                   text: 'Бронирование спортзала происходит на сайте',
                   link: 'https://support.alabuga.ru/',
                   linkText: 'support.alabuga.ru',
+                  image: 'https://cdn.poehali.dev/files/Бронирование Спортзалы Алабуга Политех шаг 1.jpg',
                 },
                 {
                   text: 'На главной странице, в левом верхнем углу выберите вкладку "Бронирование"',
+                  image: 'https://cdn.poehali.dev/files/Бронирование Спортзалы Алабуга Политех шаг 2.jpg',
                 },
                 {
                   text: 'Из предложенного списка выберите "Alabuga - Спортзал (учебный класс)". Нажмите на знак плюса справа',
+                  image: 'https://cdn.poehali.dev/files/Бронирование Спортзалы Алабуга Политех шаг 3.jpg',
                 },
                 {
                   text: 'В правом верхнем углу выберите вкладку "Месяц"',
+                  image: 'https://cdn.poehali.dev/files/Бронирование Спортзалы Алабуга Политех шаг 4.jpg',
                 },
                 {
                   text: 'Выберите необходимую дату и нажмите на нее',
                 },
                 {
                   text: 'Заполните окно, в комментариях укажите: ответственное лицо, контактные данные (ТГ, тел.), цель бронирования, кол-во человек. Нажмите кнопку добавить',
+                  image: 'https://cdn.poehali.dev/files/Бронирование Спортзалы Алабуга Политех шаг 5.jpg',
                 },
               ],
             },
@@ -456,15 +490,18 @@ const Index = () => {
                   text: 'Перейдите на сайт',
                   link: 'https://support.alabuga.ru/',
                   linkText: 'support.alabuga.ru',
+                  image: 'https://cdn.poehali.dev/files/Специалист тех. поддержки шаг 1.jpg',
                 },
                 {
                   text: 'На главной странице, в левом верхнем углу выберите вкладку "Обратиться за помощью"',
+                  image: 'https://cdn.poehali.dev/files/Специалист тех. поддержки шаг 2.jpg',
                 },
                 {
                   text: 'Из приведенного списка выберите "Создать заявку"',
                 },
                 {
                   text: 'Заполните заявку согласно приведенному примеру',
+                  image: 'https://cdn.poehali.dev/files/Специалист тех. поддержки шаг 3.jpg',
                 },
               ],
             },
@@ -658,7 +695,7 @@ const Index = () => {
               
               return (
               <Card key={task.id} className={`overflow-hidden transition-all hover:shadow-lg border-2 ${
-                isUrgent ? 'border-orange-500 bg-orange-50/50' : isPassed ? 'border-red-500 bg-red-50/50' : 'border-white/30'
+                isUrgent ? 'border-orange-500 bg-orange-950/40 dark:bg-orange-950/60' : isPassed ? 'border-red-500 bg-red-950/40 dark:bg-red-950/60' : 'border-white/30'
               }`}>
                 <CardHeader>
                   <div className="flex items-start justify-between gap-4">
@@ -672,13 +709,13 @@ const Index = () => {
                           {task.title}
                         </CardTitle>
                         {isUrgent && (
-                          <Badge variant="destructive" className="ml-2 bg-orange-500">
+                          <Badge variant="destructive" className="ml-2 bg-orange-600 hover:bg-orange-700 dark:bg-orange-500 dark:hover:bg-orange-600 text-white">
                             <Icon name="AlertTriangle" size={14} className="mr-1" />
                             Срочно!
                           </Badge>
                         )}
                         {isPassed && (
-                          <Badge variant="destructive" className="ml-2">
+                          <Badge variant="destructive" className="ml-2 bg-red-600 hover:bg-red-700 dark:bg-red-500 dark:hover:bg-red-600 text-white">
                             <Icon name="XCircle" size={14} className="mr-1" />
                             Просрочено
                           </Badge>
@@ -688,7 +725,7 @@ const Index = () => {
                         {task.description}
                         {forumDate && daysUntil !== null && (
                           <span className={`ml-2 text-xs ${
-                            isUrgent ? 'text-orange-600 font-medium' : isPassed ? 'text-red-600 font-medium' : 'text-muted-foreground'
+                            isUrgent ? 'text-orange-400 dark:text-orange-300 font-medium' : isPassed ? 'text-red-400 dark:text-red-300 font-medium' : 'text-muted-foreground'
                           }`}>
                             {daysUntil > 0 ? `(осталось ${daysUntil} дн.)` : daysUntil === 0 ? '(сегодня!)' : `(просрочено ${Math.abs(daysUntil)} дн.)`}
                           </span>
@@ -791,6 +828,15 @@ const Index = () => {
                         </span>
                       </div>
                     )}
+                    {selectedTask.instructionCategories[activeCategory].variants[activeVariant].steps[currentStep].image && (
+                      <div className="mt-6">
+                        <img 
+                          src={selectedTask.instructionCategories[activeCategory].variants[activeVariant].steps[currentStep].image} 
+                          alt={`Шаг ${currentStep + 1}`}
+                          className="w-full rounded-lg border-2 border-border shadow-lg"
+                        />
+                      </div>
+                    )}
                   </CardContent>
                 </Card>
 
@@ -869,6 +915,15 @@ const Index = () => {
                         <span className="font-medium">
                           {selectedTask.instructionVariants[activeVariant].steps[currentStep].contact}
                         </span>
+                      </div>
+                    )}
+                    {selectedTask.instructionVariants[activeVariant].steps[currentStep].image && (
+                      <div className="mt-6">
+                        <img 
+                          src={selectedTask.instructionVariants[activeVariant].steps[currentStep].image} 
+                          alt={`Шаг ${currentStep + 1}`}
+                          className="w-full rounded-lg border-2 border-border shadow-lg"
+                        />
                       </div>
                     )}
                   </CardContent>
