@@ -623,7 +623,7 @@ const Index = () => {
           </div>
 
           <a 
-            href="https://cdn.poehali.dev/projects/b1dfe913c0-alabuga/bucket/Маршрутная карта.pdf" 
+            href="https://cdn.poehali.dev/projects/21cf3ca2-3f81-47e1-b1b8-de5640882039/bucket/Дорожная карта организации форума АС.pdf" 
             download="Маршрутная карта.pdf"
             className="w-full"
           >
@@ -631,8 +631,8 @@ const Index = () => {
               variant="outline" 
               className="w-full flex items-center gap-2 bg-sidebar hover:bg-sidebar-accent text-sidebar-foreground border-sidebar-border"
             >
-              <Icon name="Download" size={16} />
-              <span className="text-sm">Выгрузка маршрутной карты</span>
+              <Icon name="FileText" size={16} />
+              <span className="text-sm">Маршрутная карта.PDF</span>
             </Button>
           </a>
         </div>
