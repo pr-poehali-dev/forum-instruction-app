@@ -564,8 +564,8 @@ const Index = () => {
       <aside className="w-80 bg-sidebar text-sidebar-foreground p-6 flex flex-col gap-6">
         <div className="space-y-4">
           <div className="flex items-center gap-3">
-            <div className="w-12 h-12 rounded-xl bg-sidebar-primary flex items-center justify-center">
-              <Icon name="Rocket" size={24} className="text-sidebar-primary-foreground" />
+            <div className="w-12 h-12 flex items-center justify-center">
+              <img src="https://cdn.poehali.dev/files/лого алабуга.png" alt="Alabuga Logo" className="w-full h-full object-contain" />
             </div>
             <div>
               <h1 className="text-xl font-bold text-sidebar-foreground">"Alabuga Start" Forum Guide</h1>
