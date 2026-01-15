@@ -316,7 +316,33 @@ const Index = () => {
           hasInstruction: true,
           instructionCategories: [
             {
-              title: 'Обзорная экскурсия по "Алабуга Политех"',
+              title: 'Экскурсия по "Алабуга Политех"',
+              variants: [
+                {
+                  title: 'Инструкция',
+                  steps: [
+                    {
+                      text: 'Для организации экскурсии по образовательному центру «Алабуга Политех» необходимо оставить заявку на сайте',
+                      link: 'https://support.alabuga.ru/',
+                      linkText: 'support.alabuga.ru',
+                    },
+                    {
+                      text: 'На сайте перейдите на вкладку «Обратиться за помощью»',
+                      image: 'https://cdn.poehali.dev/files/Шаг 1.png',
+                    },
+                    {
+                      text: 'Далее, из предложенного списка форматов обращений выберите "Создать заявку в "Алабуга Политех"',
+                      image: 'https://cdn.poehali.dev/files/Шаг 2.png',
+                    },
+                    {
+                      text: 'Заполните и отправьте заявку. Ожидайте ответа.',
+                    },
+                  ],
+                },
+              ],
+            },
+            {
+              title: 'Экскурсия по Школе "Три Медведя"',
               variants: [
                 {
                   title: 'Инструкция',
@@ -329,20 +355,7 @@ const Index = () => {
               ],
             },
             {
-              title: 'Обзорная экскурсия по Международной Школе "Три Медведя"',
-              variants: [
-                {
-                  title: 'Инструкция',
-                  steps: [
-                    {
-                      text: 'Инструкция будет добавлена позже',
-                    },
-                  ],
-                },
-              ],
-            },
-            {
-              title: 'Обзорная экскурсия по Штаб-квартире "Алабуга Политех" (Пирамида)',
+              title: 'Экскурсия по Пирамиде',
               variants: [
                 {
                   title: 'Инструкция',
@@ -837,7 +850,7 @@ const Index = () => {
               <Tabs value={activeCategory.toString()} onValueChange={handleCategoryChange} className="mb-4">
                 <TabsList className="grid w-full" style={{ gridTemplateColumns: `repeat(${selectedTask.instructionCategories.length}, 1fr)` }}>
                   {selectedTask.instructionCategories.map((category, idx) => (
-                    <TabsTrigger key={idx} value={idx.toString()}>
+                    <TabsTrigger key={idx} value={idx.toString()} className="whitespace-normal h-auto py-3 px-2 text-sm leading-tight">
                       {category.title}
                     </TabsTrigger>
                   ))}
