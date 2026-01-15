@@ -825,7 +825,7 @@ const Index = () => {
 
                 <Card className="bg-muted/50 border-2">
                   <CardContent className="pt-8 pb-8 px-8">
-                    <p className="text-xl leading-relaxed">
+                    <p className="text-xl leading-relaxed whitespace-pre-line">
                       {selectedTask.instructionCategories[activeCategory].variants[activeVariant].steps[currentStep].text}
                     </p>
                     {selectedTask.instructionCategories[activeCategory].variants[activeVariant].steps[currentStep].link && (
@@ -931,7 +931,7 @@ const Index = () => {
 
                 <Card className="bg-muted/50 border-2">
                   <CardContent className="pt-8 pb-8 px-8">
-                    <p className="text-xl leading-relaxed">
+                    <p className="text-xl leading-relaxed whitespace-pre-line">
                       {selectedTask.instructionVariants[activeVariant].steps[currentStep].text}
                     </p>
                     {selectedTask.instructionVariants[activeVariant].steps[currentStep].link && (
