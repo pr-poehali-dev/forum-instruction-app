@@ -384,7 +384,7 @@ const Index = () => {
                   title: 'Инструкция',
                   steps: [
                     {
-                      text: 'Инструкция будет добавлена позже',
+                      text: '1. Заблаговременно до проведения турнира необходимо забронировать 1 из спорт-залов. Инструкция бронирования находиться в разделе "За 2-3 недели до форума"\n\n2. Для получения инвентаря необходимо связаться с Шамилём Кирамовым. ТГ - @ShamilKiramov_SAOK\n\n3. За день до форума инвентарь необходимо забрать и самостоятельно доставить на место проведения турнира.',
                     },
                   ],
                 },
@@ -405,53 +405,12 @@ const Index = () => {
             },
           ],
         },
-
-      ],
-    },
-    {
-      id: 'week',
-      title: 'За неделю до форума',
-      period: '7 дней',
-      icon: 'Clock',
-      tasks: [
-        {
-          id: 'transport',
-          title: 'Транспорт',
-          description: 'Организация автобусов',
-          completed: false,
-          daysBeforeForum: 7,
-          hasInstruction: true,
-          instructionVariants: [
-            {
-              title: 'Инструкция',
-              steps: [
-                {
-                  text: 'Для организации автобусов оставьте заявку на сайте',
-                  link: 'https://support.alabuga.ru/',
-                  linkText: 'support.alabuga.ru',
-                },
-                {
-                  text: 'На главной странице, в списке в левом верхнем углу, выберите вкладку «Обратиться за помощью»',
-                  image: 'https://cdn.poehali.dev/files/Транспорт шаг 1.jpg',
-                },
-                {
-                  text: 'Из приведенного списка выберите «Создать заявку на автотранспорт»',
-                  image: 'https://cdn.poehali.dev/files/Транспорт шаг 2.jpg',
-                },
-                {
-                  text: 'Заполните и отправьте заявку. В заявке необходимо полностью прописать весь маршрут с указанием времени',
-                  image: 'https://cdn.poehali.dev/files/Транспорт шаг 3.jpg',
-                },
-              ],
-            },
-          ],
-        },
         {
           id: 'rooms',
           title: 'Бронирование',
           description: 'Резервирование помещений',
           completed: false,
-          daysBeforeForum: 7,
+          daysBeforeForum: 14,
           hasInstruction: true,
           instructionCategories: [
             {
@@ -573,6 +532,47 @@ const Index = () => {
                 },
               ],
             }],
+            },
+          ],
+        },
+
+      ],
+    },
+    {
+      id: 'week',
+      title: 'За неделю до форума',
+      period: '7 дней',
+      icon: 'Clock',
+      tasks: [
+        {
+          id: 'transport',
+          title: 'Транспорт',
+          description: 'Организация автобусов',
+          completed: false,
+          daysBeforeForum: 7,
+          hasInstruction: true,
+          instructionVariants: [
+            {
+              title: 'Инструкция',
+              steps: [
+                {
+                  text: 'Для организации автобусов оставьте заявку на сайте',
+                  link: 'https://support.alabuga.ru/',
+                  linkText: 'support.alabuga.ru',
+                },
+                {
+                  text: 'На главной странице, в списке в левом верхнем углу, выберите вкладку «Обратиться за помощью»',
+                  image: 'https://cdn.poehali.dev/files/Транспорт шаг 1.jpg',
+                },
+                {
+                  text: 'Из приведенного списка выберите «Создать заявку на автотранспорт»',
+                  image: 'https://cdn.poehali.dev/files/Транспорт шаг 2.jpg',
+                },
+                {
+                  text: 'Заполните и отправьте заявку. В заявке необходимо полностью прописать весь маршрут с указанием времени',
+                  image: 'https://cdn.poehali.dev/files/Транспорт шаг 3.jpg',
+                },
+              ],
             },
           ],
         },
