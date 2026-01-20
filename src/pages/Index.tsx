@@ -369,6 +369,42 @@ const Index = () => {
             },
           ],
         },
+        {
+          id: 'sports',
+          title: 'Спортивные турниры',
+          description: 'Организация спортивных мероприятий',
+          completed: false,
+          daysBeforeForum: 14,
+          hasInstruction: true,
+          instructionCategories: [
+            {
+              title: 'Бенди',
+              variants: [
+                {
+                  title: 'Инструкция',
+                  steps: [
+                    {
+                      text: 'Инструкция будет добавлена позже',
+                    },
+                  ],
+                },
+              ],
+            },
+            {
+              title: 'Пейнтбол',
+              variants: [
+                {
+                  title: 'Инструкция',
+                  steps: [
+                    {
+                      text: 'Инструкция будет добавлена позже',
+                    },
+                  ],
+                },
+              ],
+            },
+          ],
+        },
 
       ],
     },
