@@ -730,20 +730,37 @@ const Index = () => {
             />
           </div>
 
-          <a 
-            href="https://cdn.poehali.dev/projects/21cf3ca2-3f81-47e1-b1b8-de5640882039/bucket/Дорожная карта организации форума АС.pdf" 
-            target="_blank"
-            rel="noopener noreferrer"
-            className="w-full"
-          >
-            <Button 
-              variant="outline" 
-              className="w-full flex items-center gap-2 bg-sidebar hover:bg-sidebar-accent text-sidebar-foreground border-sidebar-border"
+          <div className="flex flex-col gap-2">
+            <a 
+              href="https://cdn.poehali.dev/projects/21cf3ca2-3f81-47e1-b1b8-de5640882039/bucket/Дорожная карта организации форума АС.pdf" 
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-full"
             >
-              <Icon name="FileText" size={16} />
-              <span className="text-sm">Маршрутная карта.PDF</span>
-            </Button>
-          </a>
+              <Button 
+                variant="outline" 
+                className="w-full flex items-center gap-2 bg-sidebar hover:bg-sidebar-accent text-sidebar-foreground border-sidebar-border"
+              >
+                <Icon name="FileText" size={16} />
+                <span className="text-sm">Маршрутная карта.PDF</span>
+              </Button>
+            </a>
+
+            <a 
+              href="https://forumstartkonstruktor.ru/" 
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-full"
+            >
+              <Button 
+                variant="outline" 
+                className="w-full flex items-center gap-2 bg-sidebar hover:bg-sidebar-accent text-sidebar-foreground border-sidebar-border"
+              >
+                <Icon name="CalendarRange" size={16} />
+                <span className="text-sm">Конструктор расписания</span>
+              </Button>
+            </a>
+          </div>
         </div>
 
         <div className="flex flex-col gap-2">
